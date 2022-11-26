@@ -36,4 +36,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 使用したコマンド
 
 npm install firebase
-npm install firebase-admin --save
+npm install firebase-admin --save  
+npm install react-hook-form
