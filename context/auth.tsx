@@ -37,17 +37,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     onAuthStateChanged(auth, (resultUser) => {
       unsubribe?.();
       setFbUser(resultUser);
+      setIsLoading(false);
 
       if (resultUser) {
-        setIsLoading(true);
         const ref = doc(db, `users/${resultUser.uid}`);
         unsubribe = onSnapshot(ref, (snap) => {
           setUser(snap.data() as User);
-          setIsLoading(false);
         });
       } else {
         setUser(null);
-        setIsLoading(false);
       }
     });
   }, []);
