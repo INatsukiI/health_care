@@ -38,3 +38,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 npm install firebase  
 npm install firebase-admin --save  
 npm install react-hook-form
+npm install react-datepicker --save

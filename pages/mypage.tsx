@@ -20,7 +20,7 @@ const Mypage = () => {
     <div>
       <h1>マイページ</h1>
       <p>名前:{user?.name}</p>
-      <p>プロフィール:{user?.profile}</p>
+      <p>プロフィール{user?.profile}</p>
     </div>
   );
 };
