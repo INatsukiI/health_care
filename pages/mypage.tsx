@@ -13,14 +13,14 @@ const Mypage = () => {
     router.push("/login");
     return null;
   } else {
-    console.log(user);
+    console.log(fbUser);
   }
 
   return (
     <div>
       <h1>マイページ</h1>
-      <p>名前:{user?.name}</p>
-      <p>プロフィール{user?.profile}</p>
+      <p>名前:{user?.data.name}</p>
+      <p>プロフィール{user?.data.profile}</p>
     </div>
   );
 };
