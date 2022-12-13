@@ -1,11 +1,11 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "../components/button";
 import { useAuth } from "../context/auth";
 import { Content } from "../types/content";
-import DatePicker, { registerLocale } from "react-datepicker";
-import ja from "date-fns/locale/ja";
+// import DatePicker, { registerLocale } from "react-datepicker";
+// import ja from "date-fns/locale/ja";
 import "react-datepicker/dist/react-datepicker.css";
 import { db } from "../firebase/client";
 import { doc, setDoc } from "firebase/firestore";
@@ -13,9 +13,15 @@ import { doc, setDoc } from "firebase/firestore";
 const HealthCare = () => {
   const { isLoading, fbUser, user } = useAuth();
   const Today = new Date();
-  const [date, setDate] = React.useState(Today);
-  registerLocale("ja", ja);
+  const [date, setDate] = useState(Today.toISOString());
+  // registerLocale("ja", ja);
   const router = useRouter();
+
+  const onsetDate = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setDate(e.target.value);
+  };
 
   const {
     register,
@@ -57,7 +63,15 @@ const HealthCare = () => {
       <form onSubmit={handleSubmit(submit)}>
         <div>
           <label htmlFor="datetime">日付*</label>
-          <DatePicker
+          <input
+            {...register("datetime")}
+            type="date"
+            value={date}
+            onChange={onsetDate}
+            id="datetime"
+            name="datetime"
+          />
+          {/* <DatePicker
             dateFormat="yyyy-MM-dd"
             selected={date}
             {...register("datetime")}
@@ -68,7 +82,7 @@ const HealthCare = () => {
             }}
             id="datetime"
             name="datetime"
-          />
+          /> */}
         </div>
         <div>
           <label htmlFor="wight">体重*</label>
