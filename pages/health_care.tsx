@@ -20,7 +20,7 @@ const HealthCare = () => {
   const {
     register,
     handleSubmit,
-    watch,
+    control,
     formState: { errors },
   } = useForm<Content>();
 
@@ -31,19 +31,19 @@ const HealthCare = () => {
   if (!fbUser) {
     router.push("/login");
     return null;
-  } else {
-    console.log(user);
   }
 
   const submit = (data: Content) => {
     if (!fbUser) {
       return null;
     }
+    console.log(data);
     const ref = doc(
       db,
       `users/${fbUser.uid}`,
       "contents",
-      `${Today.toISOString().split("T")[0]}`
+      // `${Today.toISOString().split("T")[0]}`
+      `${data.datetime}`
     );
     setDoc(ref, { data }).then(() => {
       alert("今日の体調を記録しました");
@@ -56,15 +56,18 @@ const HealthCare = () => {
       <h1>ヘルスケアのフォーム</h1>
       <form onSubmit={handleSubmit(submit)}>
         <div>
-          <label>日付*</label>
+          <label htmlFor="datetime">日付*</label>
           <DatePicker
-            dateFormat="yyyy/MM/dd"
+            dateFormat="yyyy-MM-dd"
             selected={date}
+            {...register("datetime")}
             locale="ja"
             minDate={Today}
             onChange={(selectedDate) => {
               setDate(selectedDate || Today);
             }}
+            id="datetime"
+            name="datetime"
           />
         </div>
         <div>
