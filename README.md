@@ -38,4 +38,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 npm install firebase  
 npm install firebase-admin --save  
 npm install react-hook-form
-npm install --save @types/react-datepicker  
+
+npm install -D tailwindcss postcss autoprefixer  
+npx tailwindcss init -p
+
+今使っていない：npm install --save @types/react-datepicker
