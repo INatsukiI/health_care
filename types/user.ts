@@ -1,6 +1,11 @@
+// export type User = {
+//   data: {
+//     name: string;
+//     profile: string;
+//   };
+// };
+
 export type User = {
-  data: {
-    name: string;
-    profile: string;
-  };
+  name: string;
+  profile: string;
 };
