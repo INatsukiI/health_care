@@ -32,7 +32,7 @@ const UserForm = () => {
       return null;
     }
     const ref = doc(db, `users/${fbUser.uid}`);
-    setDoc(ref, { data }).then(() => {
+    setDoc(ref, { name: data.name, profile: data.profile }).then(() => {
       alert("ユーザーを作成しました");
       router.push("/");
     });

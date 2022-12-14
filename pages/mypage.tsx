@@ -19,8 +19,8 @@ const Mypage = () => {
   return (
     <div>
       <h1>マイページ</h1>
-      <p>名前:{user?.data.name}</p>
-      <p>プロフィール{user?.data.profile}</p>
+      <p>名前:{user && user.name}</p>
+      <p>プロフィール{user && user.profile}</p>
     </div>
   );
 };
