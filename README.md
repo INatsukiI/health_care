@@ -41,5 +41,6 @@ npm install react-hook-form
 
 npm install -D tailwindcss postcss autoprefixer  
 npx tailwindcss init -p
-
+npm install -D @tailwindcss/forms  
+npm i classnames  
 今使っていない：npm install --save @types/react-datepicker
