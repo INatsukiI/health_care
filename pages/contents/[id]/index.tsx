@@ -1,7 +1,7 @@
 import { getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { Content } from "../../types/content";
+import { Content } from "../../../types/content";
 
 const ContentDetailPage = () => {
   const [content, setContent] = useState<Content>();
