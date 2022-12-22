@@ -518,6 +518,11 @@
   "resolved" "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
   "version" "1.2.1"
 
+"@kurkle/color@^0.3.0":
+  "integrity" "sha512-hW0GwZj06z/ZFUW2Espl7toVDjghJN+EKqyXzPSV8NV89d5BYp5rRMBJoc+aUN0x5OXDMeRQHazejr2Xmqj2tw=="
+  "resolved" "https://registry.npmjs.org/@kurkle/color/-/color-0.3.1.tgz"
+  "version" "0.3.1"
+
 "@next/env@13.0.3":
   "integrity" "sha512-/4WzeG61Ot/PxsghXkSqQJ6UohFfwXoZ3dtsypmR9EBP+OIax9JRq0trq8Z/LCT9Aq4JbihVkaazRWguORjTAw=="
   "resolved" "https://registry.npmjs.org/@next/env/-/env-13.0.3.tgz"
@@ -1085,6 +1090,13 @@
   dependencies:
     "ansi-styles" "^4.1.0"
     "supports-color" "^7.1.0"
+
+"chart.js@^4.1.1":
+  "integrity" "sha512-P0pCosNXp+LR8zO/QTkZKT6Hb7p0DPFtypEeVOf+6x06hX13NIb75R0DXUA4Ksx/+48chDQKtCCmRCviQRTqsA=="
+  "resolved" "https://registry.npmjs.org/chart.js/-/chart.js-4.1.1.tgz"
+  "version" "4.1.1"
+  dependencies:
+    "@kurkle/color" "^0.3.0"
 
 "chokidar@^3.5.3":
   "integrity" "sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw=="
@@ -3002,6 +3014,11 @@
   "integrity" "sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA=="
   "resolved" "https://registry.npmjs.org/quick-lru/-/quick-lru-5.1.1.tgz"
   "version" "5.1.1"
+
+"react-chartjs-2@^5.1.0":
+  "integrity" "sha512-Gt76b7+p7nMQq0MvkWfUSNAzIm/TLAnAO32zIpSzrQyc9JWRbVCtq8qOzPJmfpDzPcIJ7Y9Gp5g+VdTRrGITsQ=="
+  "resolved" "https://registry.npmjs.org/react-chartjs-2/-/react-chartjs-2-5.1.0.tgz"
+  "version" "5.1.0"
 
 "react-datepicker@^4.8.0":
   "integrity" "sha512-u69zXGHMpxAa4LeYR83vucQoUCJQ6m/WBsSxmUMu/M8ahTSVMMyiyQzauHgZA2NUr9y0FUgOAix71hGYUb6tvg=="
