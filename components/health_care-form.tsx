@@ -42,20 +42,10 @@ const HealthCareFrom = ({ isEditMode }: { isEditMode: boolean }) => {
     setDate(e.target.value);
   };
 
-  if (isLoading) {
-    return null;
-  }
-
-  if (!fbUser) {
-    router.push("/login");
-    return null;
-  }
-
   const submit = (data: Content) => {
     if (!fbUser) {
       return null;
     }
-    console.log(data);
 
     const ref = isEditMode
       ? doc(db, `users/${fbUser.uid}`, "contents", `${editTargetId}`)
@@ -73,6 +63,10 @@ const HealthCareFrom = ({ isEditMode }: { isEditMode: boolean }) => {
   };
 
   const deleteContent = () => {
+    if (!fbUser) {
+      return null;
+    }
+
     const ref = doc(db, `users/${fbUser.uid}`, "contents", `${editTargetId}`);
     return deleteDoc(ref).then(() => {
       alert("削除しました");
