@@ -1,11 +1,5 @@
-import {
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import HealthCareFrom from "../components/health_care-form";
@@ -18,7 +12,7 @@ import { GraphData } from "../types/graphData";
 const HealthCare = () => {
   const { isLoading, fbUser } = useAuth();
   const router = useRouter();
-  const [data, setData] = useState<GraphData>();
+  const [data, setData] = useState<Content[]>([]);
 
   useEffect(() => {
     if (fbUser) {
@@ -31,7 +25,8 @@ const HealthCare = () => {
         )
       ).then((snap) => {
         snap.forEach((doc) => {
-          console.log(doc.id, " => ", doc.data());
+          console.log(doc.id, " => ", doc.data() as Content);
+          setData((data) => [...data, doc.data() as Content]);
         });
       });
     }
@@ -62,22 +57,9 @@ const HealthCare = () => {
   //   return dates;
   // }
 
-  const labels = ["12/10", "12/11", "12/12", "12/13", "12/14", "12/15"];
-  const graphData = {
-    labels: labels,
-    datasets: [
-      {
-        label: "体温",
-        data: [36.2, 36.5, 36.0, 36.3, 36.5],
-        borderColor: "rgb(75, 192, 192)",
-      },
-      {
-        label: "体重",
-        data: [50, 51.5, 52, 53, 55, 53],
-        borderColor: "rgb(75, 100, 192)",
-      },
-    ],
-  };
+  if (!data) {
+    return null;
+  }
 
   return (
     <div className="container">
@@ -85,9 +67,14 @@ const HealthCare = () => {
         <div className="flex">
           <HealthCareFrom isEditMode={false} />
           <div className="flex-auto w-15"></div>
-          <HealthCareGraph graphData={graphData} />
+          <HealthCareGraph />
         </div>
       </div>
+      <>
+        {data.map((e) => (
+          <div key={e.datetime}>{e.datetime}</div>
+        ))}
+      </>
     </div>
   );
 };
