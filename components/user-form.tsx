@@ -1,23 +1,31 @@
 import classNames from "classnames";
 import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
-import React from "react";
+import React,{ useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Button from "../components/button";
 import { useAuth } from "../context/auth";
 import { db } from "../firebase/client";
 import { User } from "../types/user";
 
-const UserForm = () => {
-  const { isLoading, fbUser } = useAuth();
+const UserForm = ({ isEditMode }: { isEditMode: boolean }) => {
+  const { isLoading, fbUser,user } = useAuth();
   const router = useRouter();
+  const editTargetId = router.query.id;
 
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm<User>();
+
+  useEffect(() => {
+    if(isEditMode){
+      reset(user as User);
+    }
+  },[user,reset]);
 
   if (isLoading) {
     return null;
@@ -33,20 +41,20 @@ const UserForm = () => {
       return null;
     }
     const ref = doc(db, `users/${fbUser.uid}`);
-    setDoc(ref, data).then(() => {
-      alert("ユーザーを作成しました");
-      router.push("/");
+    setDoc(ref, data, { merge: true }).then(() => {
+      alert(isEditMode ? "編集を保存しました" : "ユーザーを作成しました");
+      router.push("/mypage");
     });
   };
 
   return (
     <div className="container">
-      <h1>アカウント作成</h1>
+      <h1>{isEditMode ? "プロフィール編集" : "アカウント作成"}</h1>
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <form onSubmit={handleSubmit(submit)} className="space-y-4">
-              <div>
+              <div className={isEditMode ? "hidden" : ""}>
                 <label className="block mb-0.5" htmlFor="name">
                   名前*
                 </label>
@@ -100,7 +108,7 @@ const UserForm = () => {
                   </p>
                 )}
               </div>
-              <Button>アカウント作成</Button>
+              <Button>{isEditMode ? "プロフィール更新" : "アカウント作成"}</Button>
             </form>
           </div>
         </div>
