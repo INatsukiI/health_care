@@ -13,6 +13,9 @@ const HealthCare = () => {
   const { isLoading, fbUser } = useAuth();
   const router = useRouter();
   const [data, setData] = useState<Content[]>([]);
+  const [datetimeData, setdatetimeData] = useState<string[]>([]);
+  const [bodyTmpData, setbodyTmpData] = useState<number[]>([]);
+  const [wightData, setwightData] = useState<number[]>([]);
 
   useEffect(() => {
     if (fbUser) {
@@ -20,13 +23,27 @@ const HealthCare = () => {
       getDocs(
         query(
           ref,
-          where("datetime", ">=", "2022-12-1"),
+          where("datetime", ">=", "2022-12-01"),
           where("datetime", "<", "2022-12-32")
         )
       ).then((snap) => {
         snap.forEach((doc) => {
           console.log(doc.id, " => ", doc.data() as Content);
           setData((data) => [...data, doc.data() as Content]);
+          setdatetimeData((datetimeData) => [
+            ...datetimeData,
+            doc.data().datetime.split("-")[1] +
+              "-" +
+              doc.data().datetime.split("-")[2],
+          ]);
+          setbodyTmpData((bodyTmpData) => [
+            ...bodyTmpData,
+            doc.data().body_tmp as number,
+          ]);
+          setwightData((wightData) => [
+            ...wightData,
+            doc.data().wight as number,
+          ]);
         });
       });
     }
@@ -61,20 +78,38 @@ const HealthCare = () => {
     return null;
   }
 
+  const labels = datetimeData;
+  const graphData = {
+    labels: labels,
+    datasets: [
+      {
+        type: "line" as const,
+        label: "体重",
+        data: wightData,
+        borderColor: "rgb(255, 99, 132)",
+        borderWidth: 2,
+        fill: false,
+      },
+      {
+        type: "bar" as const,
+        label: "体温",
+        data: bodyTmpData,
+        backgroundColor: "rgb(75, 192, 192)",
+        borderColor: "white",
+        borderWidth: 2,
+      },
+    ],
+  };
+
   return (
     <div className="container">
       <div className="flex flex-col justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="flex">
           <HealthCareFrom isEditMode={false} />
           <div className="flex-auto w-15"></div>
-          <HealthCareGraph />
+          <HealthCareGraph graphData={graphData} />
         </div>
       </div>
-      <>
-        {data.map((e) => (
-          <div key={e.datetime}>{e.datetime}</div>
-        ))}
-      </>
     </div>
   );
 };
