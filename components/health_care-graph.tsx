@@ -37,6 +37,8 @@ const HealthCareGraph = () => {
   const [datetimeData, setdatetimeData] = useState<string[]>([]);
   const [bodyTmpData, setbodyTmpData] = useState<number[]>([]);
   const [wightData, setwightData] = useState<number[]>([]);
+  const Today = new Date();
+  const todayMonth = Today.getMonth() + 1;
 
   useEffect(() => {
     if (fbUser) {
@@ -44,8 +46,8 @@ const HealthCareGraph = () => {
       getDocs(
         query(
           ref,
-          where("datetime", ">=", "2022-12-01"),
-          where("datetime", "<", "2022-12-32")
+          where("datetime", ">=", `2022-${todayMonth}-01`),
+          where("datetime", "<", `2022-${todayMonth}-32`)
         )
       ).then((snap) => {
         snap.forEach((doc) => {
