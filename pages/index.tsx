@@ -1,10 +1,19 @@
 import Link from "next/link";
+import { ReactElement } from "react";
+import Layout from "../components/layouts/layout";
 import styles from "../styles/Home.module.css";
+import { NextPageWithLayout } from "./_app";
 
-export default function Home() {
+const Home: NextPageWithLayout = () => {
   return (
-    <div className={styles.container}>
+    <div className="container">
       <Link href="/login">認証ページへ</Link>
     </div>
   );
-}
+};
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
+
+export default Home;
