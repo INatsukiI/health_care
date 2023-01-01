@@ -38,7 +38,9 @@ const HealthCareGraph = () => {
   const [bodyTmpData, setbodyTmpData] = useState<number[]>([]);
   const [wightData, setwightData] = useState<number[]>([]);
   const Today = new Date();
-  const todayMonth = Today.getMonth() + 1;
+  const todayYear = Today.getFullYear();
+  const todayMonth = String(Today.getMonth() + 1).padStart(2, "0");
+  console.log(`testtesttest${todayMonth}`);
 
   useEffect(() => {
     if (fbUser) {
@@ -46,8 +48,8 @@ const HealthCareGraph = () => {
       getDocs(
         query(
           ref,
-          where("datetime", ">=", `2022-${todayMonth}-01`),
-          where("datetime", "<", `2022-${todayMonth}-32`)
+          where("datetime", ">=", `${todayYear}-${todayMonth}-01`),
+          where("datetime", "<", `${todayYear}-${todayMonth}-32`)
         )
       ).then((snap) => {
         snap.forEach((doc) => {
