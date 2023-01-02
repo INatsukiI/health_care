@@ -4,7 +4,7 @@ import Header from "./header";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
-    <div>
+    <div className="container">
       <Header />
       {children}
       <Footer />
