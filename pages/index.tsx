@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ReactElement } from "react";
 import Layout from "../components/layouts/layout";
-import styles from "../styles/Home.module.css";
 import { NextPageWithLayout } from "./_app";
 
 const Home: NextPageWithLayout = () => {
