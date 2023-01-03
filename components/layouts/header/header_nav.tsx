@@ -118,42 +118,42 @@ const HeaderNav = () => {
               </svg>
             </div>
             <ul className="flex flex-col items-center justify-between min-h-[250px]">
-              <li className="border-b border-gray-400 my-8 uppercase">
-                <a href="/about">About</a>
-              </li>
-              <li className="border-b border-gray-400 my-8 uppercase">
-                <a href="javascript:void(0)" onClick={logout}>
-                  Log out
-                </a>
-              </li>
               {!user && (
                 <li className="border-b border-gray-400 my-8 uppercase">
                   <a href="/contact">Sign up</a>
                 </li>
               )}
               <li className="border-b border-gray-400 my-8 uppercase">
+                <Link href="/mypage">My Page</Link>
+              </li>
+              <li className="border-b border-gray-400 my-8 uppercase">
                 <Link href="/health_care">Health Care</Link>
+              </li>
+              <li className="border-b border-gray-400 my-8 uppercase">
+                <a href="javascript:void(0)" onClick={logout}>
+                  Log out
+                </a>
               </li>
             </ul>
           </div>
         </section>
 
         <ul className="DESKTOP-MENU hidden space-x-8 lg:flex">
-          <li>
-            <a href="/about">About</a>
-          </li>
-          <li>
-            <a href="javascript:void(0)" onClick={logout}>
-              Log out
-            </a>
-          </li>
           {!user && (
             <li>
               <a href="/contact">Sign up</a>
             </li>
           )}
           <li>
+            <Link href="/mypage">My Page</Link>
+          </li>
+          <li>
             <Link href="/health_care">Health Care</Link>
+          </li>
+          <li>
+            <a href="javascript:void(0)" onClick={logout}>
+              Log out
+            </a>
           </li>
         </ul>
       </nav>
