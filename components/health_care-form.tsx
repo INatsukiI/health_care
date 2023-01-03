@@ -14,7 +14,7 @@ import classNames from "classnames";
 const HealthCareFrom = ({ isEditMode }: { isEditMode: boolean }) => {
   const { isLoading, fbUser, user } = useAuth();
   const Today = new Date();
-  const [date, setDate] = useState(Today.toISOString());
+  const [date, setDate] = useState(Today.toISOString().split("T")[0]);
   // registerLocale("ja", ja);
   const router = useRouter();
   const editTargetId = router.query.id;
