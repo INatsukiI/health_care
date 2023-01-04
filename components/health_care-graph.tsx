@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 // 棒グラフ用のコンポーネントをインポート
 import {
@@ -17,7 +16,14 @@ import { Chart } from "react-chartjs-2";
 import { Content } from "../types/content";
 import { useAuth } from "../context/auth";
 import { db } from "../firebase/client";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  onSnapshot,
+  query,
+  QuerySnapshot,
+  where,
+} from "firebase/firestore";
 
 ChartJS.register(
   LinearScale,
@@ -45,13 +51,17 @@ const HealthCareGraph = () => {
   useEffect(() => {
     if (fbUser) {
       const ref = collection(db, `users/${fbUser.uid}`, "contents");
-      getDocs(
-        query(
-          ref,
-          where("datetime", ">=", `${todayYear}-${todayMonth}-01`),
-          where("datetime", "<", `${todayYear}-${todayMonth}-32`)
-        )
-      ).then((snap) => {
+      const q = query(
+        ref,
+        where("datetime", ">=", `${todayYear}-${todayMonth}-01`),
+        where("datetime", "<", `${todayYear}-${todayMonth}-32`)
+      );
+      const unsub = onSnapshot(q, (snap) => {
+        setData([]);
+        setdatetimeData([]);
+        setbodyTmpData([]);
+        setwightData([]);
+
         snap.forEach((doc) => {
           console.log(doc.id, " => ", doc.data() as Content);
           setData((data) => [...data, doc.data() as Content]);
@@ -72,7 +82,7 @@ const HealthCareGraph = () => {
         });
       });
     }
-  }, [fbUser]);
+  }, [fbUser, todayMonth, todayYear]);
 
   const labels = datetimeData;
   const graphData = {
