@@ -2,10 +2,12 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useAuth } from "../../../context/auth";
 import { login, logout } from "../../../lib/auth";
+import { useModal } from 'react-hooks-use-modal';
 
 const HeaderNav = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const { fbUser, user } = useAuth();
+  const [Modal, open, close, isOpen] = useModal("__next");
 
   if (!fbUser) {
     return (
@@ -151,7 +153,7 @@ const HeaderNav = () => {
             <Link href="/health_care">Health Care</Link>
           </li>
           <li>
-            <a href="javascript:void(0)" onClick={logout}>
+            <a href="javascript:void(0)" onClick={open}>
               Log out
             </a>
           </li>
@@ -176,6 +178,12 @@ const HeaderNav = () => {
         align-items: center;
       }
     `}</style>
+    <Modal>
+        <div className="bg-slate-100 px-14 py-7 rounded-xl">
+          <h1 className="text-3xl text-center mb-4">ログアウトしてよろしいですか？</h1>
+          <button onClick={logout} className="bg-blue-700 text-white px-6 py-2 rounded-md">OK</button>
+        </div>
+    </Modal>
     </>
   );
 };
