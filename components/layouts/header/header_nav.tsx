@@ -179,8 +179,8 @@ const HeaderNav = () => {
       }
     `}</style>
     <Modal>
-        <div className="bg-slate-100 px-14 py-7 rounded-xl">
-          <h1 className="text-3xl text-center mb-4">ログアウトしてよろしいですか？</h1>
+        <div className="text-center bg-slate-100 px-14 py-7 rounded-xl">
+          <h1 className="text-3xl mb-4">ログアウトしてよろしいですか？</h1>
           <button onClick={logout} className="bg-blue-700 text-white px-6 py-2 rounded-md">OK</button>
         </div>
     </Modal>
