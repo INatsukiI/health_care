@@ -13,7 +13,7 @@ const Mypage: NextPageWithLayout = () => {
   }
 
   if (!fbUser) {
-    router.push("/login");
+    router.push("/");
     return null;
   } else {
     console.log(fbUser);

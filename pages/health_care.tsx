@@ -15,7 +15,7 @@ const HealthCare: NextPageWithLayout = () => {
   }
 
   if (!fbUser) {
-    router.push("/login");
+    router.push("/");
     return null;
   }
 
