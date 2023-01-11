@@ -44,6 +44,7 @@ npx tailwindcss init -p
 npm install -D @tailwindcss/forms  
 npm i classnames
 
-npm install -D chart.js react-chartjs-2
+npm install -D chart.js react-chartjs-2  
+npm i react-hooks-use-modal
 
 今使っていない：npm install --save @types/react-datepicker
