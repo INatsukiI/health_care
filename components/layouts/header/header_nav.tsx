@@ -2,7 +2,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useAuth } from "../../../context/auth";
 import { login, logout } from "../../../lib/auth";
-import { useModal } from 'react-hooks-use-modal';
+import { useModal } from "react-hooks-use-modal";
 
 const HeaderNav = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -43,7 +43,7 @@ const HeaderNav = () => {
               </div>
               <ul className="flex flex-col items-center justify-between min-h-[250px]">
                 <li className="border-b border-gray-400 my-8 uppercase">
-                  <a href="/about">About</a>
+                  <Link href="/about">About</Link>
                 </li>
                 <li className="border-b border-gray-400 my-8 uppercase">
                   <a href="javascript:void(0)" onClick={login}>
@@ -56,7 +56,7 @@ const HeaderNav = () => {
 
           <ul className="DESKTOP-MENU hidden space-x-8 lg:flex">
             <li>
-              <a href="/about">About</a>
+              <Link href="/about">About</Link>
             </li>
             <li>
               <a href="javascript:void(0)" onClick={login}>
@@ -178,12 +178,17 @@ const HeaderNav = () => {
         align-items: center;
       }
     `}</style>
-    <Modal>
+      <Modal>
         <div className="text-center bg-slate-100 px-14 py-7 rounded-xl">
           <h1 className="text-3xl mb-4">ログアウトしてよろしいですか？</h1>
-          <button onClick={logout} className="bg-blue-700 text-white px-6 py-2 rounded-md">OK</button>
+          <button
+            onClick={logout}
+            className="bg-blue-700 text-white px-6 py-2 rounded-md"
+          >
+            OK
+          </button>
         </div>
-    </Modal>
+      </Modal>
     </>
   );
 };
