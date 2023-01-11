@@ -46,9 +46,9 @@ const HeaderNav = () => {
                   <Link href="/about">About</Link>
                 </li>
                 <li className="border-b border-gray-400 my-8 uppercase">
-                  <a href="javascript:void(0)" onClick={login}>
+                  <Link href="#!" onClick={login}>
                     Log in
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -59,9 +59,9 @@ const HeaderNav = () => {
               <Link href="/about">About</Link>
             </li>
             <li>
-              <a href="javascript:void(0)" onClick={login}>
+              <Link href="#!" onClick={login}>
                 Log in
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -122,7 +122,7 @@ const HeaderNav = () => {
             <ul className="flex flex-col items-center justify-between min-h-[250px]">
               {!user && (
                 <li className="border-b border-gray-400 my-8 uppercase">
-                  <a href="/contact">Sign up</a>
+                  <Link href="/create">Sign up</Link>
                 </li>
               )}
               <li className="border-b border-gray-400 my-8 uppercase">
@@ -132,9 +132,9 @@ const HeaderNav = () => {
                 <Link href="/health_care">Health Care</Link>
               </li>
               <li className="border-b border-gray-400 my-8 uppercase">
-                <a href="javascript:void(0)" onClick={logout}>
+                <Link href="#!" onClick={logout}>
                   Log out
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -143,7 +143,7 @@ const HeaderNav = () => {
         <ul className="DESKTOP-MENU hidden space-x-8 lg:flex">
           {!user && (
             <li>
-              <a href="/contact">Sign up</a>
+              <Link href="/contact">Sign up</Link>
             </li>
           )}
           <li>
@@ -153,9 +153,9 @@ const HeaderNav = () => {
             <Link href="/health_care">Health Care</Link>
           </li>
           <li>
-            <a href="javascript:void(0)" onClick={open}>
+            <Link href="#!" onClick={open}>
               Log out
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
