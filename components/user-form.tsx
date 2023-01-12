@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
-import React,{ useEffect } from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Button from "../components/button";
 import { useAuth } from "../context/auth";
@@ -9,9 +9,8 @@ import { db } from "../firebase/client";
 import { User } from "../types/user";
 
 const UserForm = ({ isEditMode }: { isEditMode: boolean }) => {
-  const { isLoading, fbUser,user } = useAuth();
+  const { isLoading, fbUser, user } = useAuth();
   const router = useRouter();
-  const editTargetId = router.query.id;
 
   const {
     register,
@@ -22,17 +21,22 @@ const UserForm = ({ isEditMode }: { isEditMode: boolean }) => {
   } = useForm<User>();
 
   useEffect(() => {
-    if(isEditMode){
+    if (isEditMode) {
       reset(user as User);
     }
-  },[user,reset]);
+  }, [user, reset]);
 
   if (isLoading) {
     return null;
   }
 
   if (!fbUser) {
-    router.push("/login");
+    router.push("/");
+    return null;
+  }
+
+  if (fbUser && user) {
+    router.push("/mypage");
     return null;
   }
 
@@ -108,7 +112,9 @@ const UserForm = ({ isEditMode }: { isEditMode: boolean }) => {
                   </p>
                 )}
               </div>
-              <Button>{isEditMode ? "プロフィール更新" : "アカウント作成"}</Button>
+              <Button>
+                {isEditMode ? "プロフィール更新" : "アカウント作成"}
+              </Button>
             </form>
           </div>
         </div>
