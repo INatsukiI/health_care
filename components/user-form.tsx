@@ -24,7 +24,7 @@ const UserForm = ({ isEditMode }: { isEditMode: boolean }) => {
     if (isEditMode) {
       reset(user as User);
     }
-  }, [user, reset]);
+  }, [user, reset, isEditMode]);
 
   if (isLoading) {
     return null;
@@ -35,7 +35,7 @@ const UserForm = ({ isEditMode }: { isEditMode: boolean }) => {
     return null;
   }
 
-  if (fbUser && user) {
+  if (user && !isEditMode) {
     router.push("/mypage");
     return null;
   }
@@ -54,7 +54,7 @@ const UserForm = ({ isEditMode }: { isEditMode: boolean }) => {
   return (
     <div className="container">
       <h1>{isEditMode ? "プロフィール編集" : "アカウント作成"}</h1>
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <div className="mt-16 flex flex-col items-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <form onSubmit={handleSubmit(submit)} className="space-y-4">
