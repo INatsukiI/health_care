@@ -17,6 +17,13 @@ const Mypage: NextPageWithLayout = () => {
     router.push("/");
     return null;
   }
+  if (!user) {
+    return (
+      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        アカウント未登録
+      </h5>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center">
