@@ -77,31 +77,34 @@ const HealthCareFrom = ({ isEditMode }: { isEditMode: boolean }) => {
   /* <h1>{isEditMode ? "編集画面" : "ヘルスケアのフォーム"}</h1> */
 
   return (
-    <div className="flex-auto w-25 bg-white rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700">
-      <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-        <form onSubmit={handleSubmit(submit)} className="space-y-4">
-          <div>
-            <label className="block mb-0.5" htmlFor="datetime">
-              日付*
-            </label>
-            <input
-              className={classNames(
-                "rounded border",
-                errors.datetime ? "border-red-500" : "border-slate-300"
+    <div className="flex flex-col items-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <div className="bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+          <form onSubmit={handleSubmit(submit)} className="space-y-4">
+            <div>
+              <label className="block mb-0.5" htmlFor="datetime">
+                日付*
+              </label>
+              <input
+                className={classNames(
+                  "rounded border",
+                  errors.datetime ? "border-red-500" : "border-slate-300"
+                )}
+                {...register("datetime", {
+                  required: "必須入力です",
+                })}
+                type="date"
+                value={date}
+                onChange={onsetDate}
+                id="datetime"
+                name="datetime"
+              />
+              {errors.datetime && (
+                <p className="text-red-500 mt-0.5">
+                  {errors.datetime?.message}
+                </p>
               )}
-              {...register("datetime", {
-                required: "必須入力です",
-              })}
-              type="date"
-              value={date}
-              onChange={onsetDate}
-              id="datetime"
-              name="datetime"
-            />
-            {errors.datetime && (
-              <p className="text-red-500 mt-0.5">{errors.datetime?.message}</p>
-            )}
-            {/* <DatePicker
+              {/* <DatePicker
                 dateFormat="yyyy-MM-dd"
                 selected={date}
                 {...register("datetime")}
@@ -113,61 +116,70 @@ const HealthCareFrom = ({ isEditMode }: { isEditMode: boolean }) => {
                 id="datetime"
                 name="datetime"
               /> */}
-          </div>
-          <div>
-            <label className="block mb-0.5" htmlFor="wight">
-              体重*
-            </label>
-            <input
-              className={classNames(
-                "rounded border",
-                errors.wight ? "border-red-500" : "border-slate-300"
+            </div>
+            <div>
+              <label className="block mb-0.5" htmlFor="wight">
+                体重*
+              </label>
+              <input
+                className={classNames(
+                  "rounded border",
+                  errors.wight ? "border-red-500" : "border-slate-300"
+                )}
+                defaultValue={50.5}
+                autoComplete="wight"
+                {...register("wight", {
+                  required: "必須入力です",
+                })}
+                id="wight"
+                name="wight"
+                type="number"
+                step="0.1"
+              />
+              {errors.wight && (
+                <p className="text-red-500 mt-0.5">{errors.wight?.message}</p>
               )}
-              defaultValue={50.5}
-              autoComplete="wight"
-              {...register("wight", {
-                required: "必須入力です",
-              })}
-              id="wight"
-              name="wight"
-              type="number"
-              step="0.1"
-            />
-            {errors.wight && (
-              <p className="text-red-500 mt-0.5">{errors.wight?.message}</p>
-            )}
-          </div>
-          <div>
-            <label className="block mb-0.5" htmlFor="body_tmp">
-              体温*
-            </label>
-            <input
-              className={classNames(
-                "rounded border",
-                errors.body_tmp ? "border-red-500" : "border-slate-300"
+            </div>
+            <div>
+              <label className="block mb-0.5" htmlFor="body_tmp">
+                体温*
+              </label>
+              <input
+                className={classNames(
+                  "rounded border",
+                  errors.body_tmp ? "border-red-500" : "border-slate-300"
+                )}
+                defaultValue={36.5}
+                {...register("body_tmp", {
+                  required: "必須入力です",
+                })}
+                id="body_tmp"
+                name="body_tmp"
+                type="number"
+                step="0.1"
+              />
+              {errors.body_tmp && (
+                <p className="text-red-500 mt-0.5">
+                  {errors.body_tmp?.message}
+                </p>
               )}
-              defaultValue={36.5}
-              {...register("body_tmp", {
-                required: "必須入力です",
-              })}
-              id="body_tmp"
-              name="body_tmp"
-              type="number"
-              step="0.1"
-            />
-            {errors.body_tmp && (
-              <p className="text-red-500 mt-0.5">{errors.body_tmp?.message}</p>
-            )}
-          </div>
-          <Button>{isEditMode ? "更新" : "保存"}</Button>
-          {isEditMode ? (
-            <button type="button" onClick={deleteContent}>
-              削除
-            </button>
-          ) : (
-            ""
-          )}
-        </form>
+            </div>
+            <div className="flex justify-between">
+              <Button>{isEditMode ? "更新" : "保存"}</Button>
+              {isEditMode ? (
+                <button
+                  type="button"
+                  className="px-4 py-2 rounded-full bg-red-500 text-white shadow"
+                  onClick={deleteContent}
+                >
+                  削除
+                </button>
+              ) : (
+                ""
+              )}
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

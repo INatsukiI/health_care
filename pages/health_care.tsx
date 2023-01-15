@@ -7,7 +7,7 @@ import { useAuth } from "../context/auth";
 import { NextPageWithLayout } from "./_app";
 
 const HealthCare: NextPageWithLayout = () => {
-  const { isLoading, fbUser } = useAuth();
+  const { isLoading, user, fbUser } = useAuth();
   const router = useRouter();
 
   if (isLoading) {
@@ -17,6 +17,14 @@ const HealthCare: NextPageWithLayout = () => {
   if (!fbUser) {
     router.push("/");
     return null;
+  }
+
+  if (!user) {
+    return (
+      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        アカウント未登録
+      </h5>
+    );
   }
 
   return (
