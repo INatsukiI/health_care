@@ -46,7 +46,6 @@ const HealthCareGraph = () => {
   const Today = new Date();
   const todayYear = Today.getFullYear();
   const todayMonth = String(Today.getMonth() + 1).padStart(2, "0");
-  console.log(`testtesttest${todayMonth}`);
 
   useEffect(() => {
     if (fbUser) {
