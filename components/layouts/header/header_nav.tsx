@@ -131,6 +131,9 @@ const HeaderNav = () => {
               <li className="border-b border-gray-400 my-8 uppercase">
                 <Link href="/health_care">Health Care</Link>
               </li>
+              <li>
+                <Link href="/contents">Contents</Link>
+              </li>
               <li className="border-b border-gray-400 my-8 uppercase">
                 <Link href="#!" onClick={logout}>
                   Log out
@@ -143,7 +146,7 @@ const HeaderNav = () => {
         <ul className="DESKTOP-MENU hidden space-x-8 lg:flex">
           {!user && (
             <li>
-              <Link href="/contact">Sign up</Link>
+              <Link href="/create">Sign up</Link>
             </li>
           )}
           <li>
@@ -151,6 +154,9 @@ const HeaderNav = () => {
           </li>
           <li>
             <Link href="/health_care">Health Care</Link>
+          </li>
+          <li>
+            <Link href="/contents">Contents</Link>
           </li>
           <li>
             <Link href="#!" onClick={open}>
