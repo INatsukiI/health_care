@@ -36,4 +36,16 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 使用したコマンド
 
 npm install firebase  
-npm install firebase-admin --save
+npm install firebase-admin --save  
+npm install react-hook-form
+
+npm install -D tailwindcss postcss autoprefixer  
+npx tailwindcss init -p
+npm install -D @tailwindcss/forms  
+npm i classnames
+
+npm install -D chart.js react-chartjs-2  
+npm i react-hooks-use-modal
+
+今使っていない：npm install --save @types/react-datepicker
+
