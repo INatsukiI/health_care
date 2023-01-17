@@ -40,7 +40,7 @@ const About: NextPageWithLayout = () => {
           データベース・認証： Firebase
         </p>
         <p className="mt-2 text-lg text-slate-700 dark:text-slate-400 ml-6">
-          デプロイ： Versel
+          デプロイ： Vercel
         </p>
       </div>
     </div>
