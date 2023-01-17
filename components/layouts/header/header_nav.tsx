@@ -43,11 +43,11 @@ const HeaderNav = () => {
               </div>
               <ul className="flex flex-col items-center justify-between min-h-[250px]">
                 <li className="border-b border-gray-400 my-8 uppercase">
-                  <Link href="/about">About</Link>
+                  <Link href="/about">ABOUT</Link>
                 </li>
                 <li className="border-b border-gray-400 my-8 uppercase">
                   <Link href="#!" onClick={login}>
-                    Log in
+                    LOG IN
                   </Link>
                 </li>
               </ul>
@@ -131,7 +131,7 @@ const HeaderNav = () => {
               <li className="border-b border-gray-400 my-8 uppercase">
                 <Link href="/health_care">Health Care</Link>
               </li>
-              <li>
+              <li className="border-b border-gray-400 my-8 uppercase">
                 <Link href="/contents">Contents</Link>
               </li>
               <li className="border-b border-gray-400 my-8 uppercase">
