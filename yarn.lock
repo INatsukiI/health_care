@@ -2330,7 +2330,6 @@
     "mkdirp" "^1.0.4"
     "requizzle" "^0.2.3"
     "strip-json-comments" "^3.1.0"
-    "taffydb" "2.6.2"
     "underscore" "~1.13.2"
 
 "json-bigint@^1.0.0":
@@ -3439,11 +3438,6 @@
   "integrity" "sha512-SYJSIgeyXW7EuX1ytdneO5e8jip42oHWg9xl/o3oTYhmXusZVgiA+VlPvjIN+kHii9v90AmzTZEBcsEvuAY+TA=="
   "resolved" "https://registry.npmjs.org/tabbable/-/tabbable-6.0.1.tgz"
   "version" "6.0.1"
-
-"taffydb@2.6.2":
-  "integrity" "sha512-y3JaeRSplks6NYQuCOj3ZFMO3j60rTwbuKCvZxsAraGYH2epusatvZ0baZYA01WsGqJBq/Dl6vOrMUJqyMj8kA=="
-  "resolved" "https://registry.npmjs.org/taffydb/-/taffydb-2.6.2.tgz"
-  "version" "2.6.2"
 
 "tailwindcss@^3.2.4", "tailwindcss@>=3.0.0 || >= 3.0.0-alpha.1":
   "integrity" "sha512-AhwtHCKMtR71JgeYDaswmZXhPcW9iuI9Sp2LvZPo9upDZ7231ZJ7eA9RaURbhpXGVlrjX4cFNlB4ieTetEb7hQ=="
