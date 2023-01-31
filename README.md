@@ -7,9 +7,9 @@ https://health-recoder.vercel.app/
 
 ## 使用した技術
 
-フレームワーク： Next.js  
-データベース・認証： Firebase  
-デプロイ： Vercel
+-フレームワーク： Next.js  
+-データベース・認証： Firebase  
+-デプロイ： Vercel
 
 ## 使用したコマンド
 
